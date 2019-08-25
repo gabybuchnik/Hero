@@ -1,0 +1,12 @@
+<div class="weather-details">
+  <input class="input-city" type="text" placeholder="enter city" value="tel aviv" (keyup)="autocomplete()" #city>
+  <select>
+    <option *ngFor="let city of cities" (change)="setCity()" #cityOption>
+      {{city}}
+    </option>
+  </select>
+  <div></div>
+  <div class="border weather-forecast">
+    
+  </div>
+</div>
