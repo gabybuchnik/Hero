@@ -1,7 +1,7 @@
 <div class="weather-details">
   <input class="input-city" type="text" placeholder="enter city" value="tel aviv" (keyup)="autocomplete()" #city>
-  <select>
-    <option *ngFor="let city of cities" (change)="setCity()" #cityOption>
+  <select (change)="setCity()" #citySelect>
+    <option *ngFor="let city of cities" #cityOption>
       {{city}}
     </option>
   </select>

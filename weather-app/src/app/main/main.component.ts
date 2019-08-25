@@ -8,6 +8,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class MainComponent implements OnInit {
   @ViewChild('city') city: ElementRef;
   @ViewChild('cityOption') cityOption : ElementRef;
+  @ViewChild('citySelect') citySelect : ElementRef;
   cities : string[];
   constructor() { 
     this.cities = ['tel aviv'];
@@ -28,6 +29,6 @@ export class MainComponent implements OnInit {
     }
   }
   setCity(){
-    this.city.nativeElement.value = this.cityOption.nativeElement.selectedIndex;
+    this.city.nativeElement.value = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
   }
 }
