@@ -1,3 +1,9 @@
-<p>
-  favorites works!
-</p>
+<div class="favorites-wrapper">
+  <div *ngIf="favorites" class="item-wrapper">
+    <div *ngFor="let f of favorites" class="item">
+      <div>{{f.name}}</div>
+      <div>{{f.dagrees}}</div>
+      <div>{{f.weatherText}}</div>
+    </div>
+  </div>
+</div>
