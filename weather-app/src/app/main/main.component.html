@@ -1,12 +1,39 @@
 <div class="weather-details">
-  <input class="input-city" type="text" placeholder="enter city" value="tel aviv" (keyup)="autocomplete()" #city>
-  <select (change)="setCity()" #citySelect>
-    <option *ngFor="let city of cities" #cityOption>
-      {{city}}
-    </option>
-  </select>
-  <div></div>
-  <div class="border weather-forecast">
-    
+  <form>
+    <input class="input-city" type="text" placeholder="enter city" value="tel aviv" (keyup)="autocomplete()" #city>
+    <select (change)="setCity()" #citySelect>
+      <option *ngFor="let city of cities" #cityOption>
+        {{city}}
+      </option>
+    </select>
+  </form>
+  <div class="border weather-forecast d-flex flex-column justify-content-center">
+    <div class="d-flex justify-content-between">
+      <div class="p1">1</div>
+      <div class="p1">2</div>
+    </div>
+    <h3 class="d-flex justify-content-center my-1">Clouds</h3>
+    <div class="d-flex flex-row justify-content-around">
+      <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
+        <div>Sun</div>
+        <div>22'c</div>
+      </div>
+      <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
+        <div>Sun</div>
+        <div>22'c</div>
+      </div>
+      <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
+        <div>Sun</div>
+        <div>22'c</div>
+      </div>
+      <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
+        <div>Sun</div>
+        <div>22'c</div>
+      </div>
+      <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
+        <div>Sun</div>
+        <div>22'c</div>
+      </div>
+    </div>
   </div>
 </div>

@@ -5,23 +5,31 @@
     margin: 0;
     padding: 0;
     background: rgb(112, 112, 112);
+    width: 100%;
 }
 
-.navigation>li>ul>li {
+.navigation > li > ul > li {
     display: inline-block;
     margin: 5px;
+    padding: 5px;
+    border:1px solid;
+    border-radius: 5px;
+    min-width:80px;
+    text-align: center;
+    transition: 0.2s all;
+    
 }
 
 .navigation>li>ul>li>a {
     text-decoration: none;
-    color: #fff;
-    transition: 0.2s all;
+    color: #fff; 
 }
-.navigation>li>ul>li>a:hover {
-    color: rgb(69, 39, 139);
+.navigation>li>ul>li:hover {
+    background-color: rgb(69, 39, 139);
 }
 
 h4 {
     margin: 5px;
     padding: 5px;
+    font-weight: bold;
 }
