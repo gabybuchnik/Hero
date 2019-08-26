@@ -1,5 +1,6 @@
 .border{
-    border:1px solid;
+    border:1px solid #ccc;
+    border-radius: 5px;
 }
 .input-city , .select-city{
     width:100%;
@@ -8,7 +9,11 @@
     margin:15px auto;
 }
 .weather-details{
-    width: 800px;
+    width: 1000px;
+}
+.weather-forecast{
+    min-height: 350px;
+    padding: 10px;
 }
 .d-flex{
     display: flex;
@@ -41,3 +46,13 @@
     width:15%;
     min-height:70px;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .currentWeather-row{
+        flex-direction: column;
+    }
+    .currentWeather-row > div{
+        width: 100%;
+    }
+  }

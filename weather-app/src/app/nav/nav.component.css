@@ -4,7 +4,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background: rgb(112, 112, 112);
+    background: rgb(96, 159, 214);
     width: 100%;
 }
 
@@ -17,7 +17,7 @@
     min-width:80px;
     text-align: center;
     transition: 0.2s all;
-    
+    background: #7b6868;
 }
 
 .navigation>li>ul>li>a {
@@ -25,11 +25,16 @@
     color: #fff; 
 }
 .navigation>li>ul>li:hover {
-    background-color: rgb(69, 39, 139);
+    background: #d61919;
 }
 
-h4 {
+.links{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+h3 {
     margin: 5px;
     padding: 5px;
-    font-weight: bold;
 }

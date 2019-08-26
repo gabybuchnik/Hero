@@ -5,7 +5,7 @@
       {{city.LocalizedName}}
     </option>
   </select>
-  <div class="border weather-forecast d-flex flex-column justify-content-center">
+  <div class="border weather-forecast d-flex flex-column justify-content-between">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column p1">
         <div *ngIf="cityName">{{cityName}}</div>
@@ -17,10 +17,9 @@
       </div>
     </div>
     <h3 *ngIf="currentWeather" class="d-flex justify-content-center my-1">{{currentWeather[0].WeatherText}}</h3>
-    <div class="d-flex flex-row justify-content-around" *ngIf="fiveDaysWeather">
+    <div class="currentWeather-row d-flex flex-row justify-content-around" *ngIf="fiveDaysWeather">
       <div *ngFor="let dayWeather of fiveDaysWeather.DailyForecasts"
         class="day-weather d-flex flex-column border align-items-center justify-content-center">
-        <div>Day</div>
         <div>{{dayWeather.Temperature.Minimum.Value}}{{dayWeather.Temperature.Minimum.Unit}} -
           {{dayWeather.Temperature.Maximum.Value}}{{dayWeather.Temperature.Maximum.Unit}}</div>
         <div *ngIf="dayWeather.Day.Icon < 9; else showOtherIcons">
