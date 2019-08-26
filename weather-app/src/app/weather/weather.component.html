@@ -2,9 +2,9 @@
 
   <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
   <select (change)="setCity()" class="select-city" #citySelect>
-    <option *ngFor="let city of cities" #cityOption>
-      {{city.LocalizedName}}
-    </option>
+      <option *ngFor="let city of cities" #cityOption>
+          <app-cities [city]="city"></app-cities>
+      </option>
   </select>
 
   <div class="d-flex justify-content-between">
