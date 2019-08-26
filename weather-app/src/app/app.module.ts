@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NavComponent } from './nav/nav.component';
 import { WeatherComponent } from './weather/weather.component';
+import { CitiesComponent } from './weather/cities/cities.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { WeatherComponent } from './weather/weather.component';
     MainComponent,
     FavoritesComponent,
     NavComponent,
-    WeatherComponent
+    WeatherComponent,
+    CitiesComponent
   ],
   imports: [
     BrowserModule,
