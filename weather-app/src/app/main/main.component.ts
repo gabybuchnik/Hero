@@ -22,9 +22,10 @@ export class MainComponent implements OnInit {
   }
 
   async ngOnInit() {
+    const defaultKey = '215854';
     this.autocomplete();
-    this.getWeather('215854');
-    this.getFiveDayWeather('215854');
+    this.getWeather(defaultKey);
+    this.getFiveDayWeather(defaultKey);
   }
   async autocomplete() {
     let city = this.city.nativeElement.value;
@@ -42,9 +43,9 @@ export class MainComponent implements OnInit {
   }
   async getWeather(key){
     this.currentWeather = await this.weatherService.getCurrentDayWeather(key);
+    console.log(this.currentWeather);
   }
   async getFiveDayWeather(key){
     this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
-    console.log(this.fiveDaysWeather);
   }
 }
