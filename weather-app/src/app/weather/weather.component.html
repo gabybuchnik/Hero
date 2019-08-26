@@ -1,0 +1,47 @@
+<div class="border weather-forecast d-flex flex-column justify-content-between">
+
+  <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
+  <select (change)="setCity()" class="select-city" #citySelect>
+    <option *ngFor="let city of cities" #cityOption>
+      {{city.LocalizedName}}
+    </option>
+  </select>
+
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-row p1">
+      <div class="d-flex flex-column p1" *ngIf="currentWeather[0]">
+        <div *ngIf="currentWeather[0].WeatherIcon < 9; else showOtherCurrentIcons">
+          <img src="https://developer.accuweather.com/sites/default/files/0{{currentWeather[0].WeatherIcon}}-s.png">
+        </div>
+        <ng-template #showOtherCurrentIcons>
+          <img src="https://developer.accuweather.com/sites/default/files/{{currentWeather[0].WeatherIcon}}-s.png">
+        </ng-template>
+      </div>
+      <div class="d-flex flex-column p1">
+        <div *ngIf="cityName">{{cityName}}</div>
+        <div *ngIf="currentWeather[0]">
+          {{currentWeather[0].Temperature.Metric.Value}}{{currentWeather[0].Temperature.Metric.Unit}}
+        </div>
+      </div>
+    </div>
+    <div class="p1">
+      <button class="button" (click)="toggleFavorites()">{{btnText}}</button>
+    </div>
+  </div>
+
+  <h3 *ngIf="currentWeather[0]" class="d-flex justify-content-center my-1">{{currentWeather[0].WeatherText}}</h3>
+
+  <div class="currentWeather-row d-flex flex-row justify-content-around" *ngIf="fiveDaysWeather">
+    <div *ngFor="let dayWeather of fiveDaysWeather.DailyForecasts"
+      class="day-weather d-flex flex-column border align-items-center justify-content-center">
+      <div>{{dayWeather.Temperature.Minimum.Value}}{{dayWeather.Temperature.Minimum.Unit}} -
+        {{dayWeather.Temperature.Maximum.Value}}{{dayWeather.Temperature.Maximum.Unit}}</div>
+      <div *ngIf="dayWeather.Day.Icon < 9; else showOtherIcons">
+        <img src="https://developer.accuweather.com/sites/default/files/0{{dayWeather.Day.Icon}}-s.png">
+      </div>
+      <ng-template #showOtherIcons>
+        <img src="https://developer.accuweather.com/sites/default/files/{{dayWeather.Day.Icon}}-s.png">
+      </ng-template>
+    </div>
+  </div>
+</div>
