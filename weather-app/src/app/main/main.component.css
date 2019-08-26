@@ -1,63 +1,83 @@
-.border{
-    border:1px solid #ccc;
+.border {
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
-.input-city , .select-city{
-    width:100%;
-    max-width:300px;
+
+.input-city, .select-city {
+    width: 100%;
+    max-width: 300px;
     display: block;
-    margin:15px auto;
+    margin: 15px auto;
 }
-.weather-details{
+
+.weather-details {
     width: 1000px;
 }
-.weather-forecast{
+
+.weather-forecast {
     min-height: 350px;
     padding: 10px;
 }
-.d-flex{
+
+.d-flex {
     display: flex;
 }
-.justify-content-center{
+
+.justify-content-center {
     justify-content: center;
 }
-.flex-row{
+
+.flex-row {
     flex-direction: row;
 }
-.flex-column{
+
+.flex-column {
     flex-direction: column;
 }
-.align-items-center{
+
+.align-items-center {
     align-items: center;
 }
-.justify-content-between{
+
+.justify-content-between {
     justify-content: space-between;
 }
-.justify-content-around{
+
+.justify-content-around {
     justify-content: space-around;
 }
-.p1{
+
+.p1 {
     padding: 5px;
 }
-.my-1{
-    margin:5px 0px;
-}
-.day-weather{
-    width:15%;
-    min-height:70px;
-}
-.button{
-    background:red;
-    border:1px solid;
-    border-radius: 5px;
+
+.my-1 {
+    margin: 5px 0px;
 }
 
+.day-weather {
+    width: 15%;
+    min-height: 70px;
+}
+
+.button {
+    background: #000;
+    border: 1px solid;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+.button:hover{
+    background: rgb(95, 95, 95);
+}
 
 @media only screen and (max-width: 600px) {
-    .currentWeather-row{
+    .currentWeather-row {
         flex-direction: column;
     }
-    .currentWeather-row > div{
+    .currentWeather-row>div {
         width: 100%;
     }
-  }
+}
