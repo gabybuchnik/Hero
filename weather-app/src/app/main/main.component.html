@@ -1,18 +1,21 @@
 <div class="weather-details">
-  <form>
-    <input class="input-city" type="text" placeholder="enter city" value="tel aviv" (keyup)="autocomplete()" #city>
-    <select (change)="setCity()" #citySelect>
-      <option *ngFor="let city of cities" #cityOption>
-        {{city}}
-      </option>
-    </select>
-  </form>
+  <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
+  <select (change)="setCity()" class="select-city" #citySelect>
+    <option *ngFor="let city of cities" #cityOption>
+      {{city.LocalizedName}}
+    </option>
+  </select>
   <div class="border weather-forecast d-flex flex-column justify-content-center">
     <div class="d-flex justify-content-between">
-      <div class="p1">1</div>
-      <div class="p1">2</div>
+      <div class="d-flex flex-column p1">
+        <div *ngIf="cityName">{{cityName}}</div>
+        <div *ngIf="currentWeather">{{currentWeather[0].Temperature.Metric.Value}}{{currentWeather[0].Temperature.Metric.Unit}}</div>
+      </div>
+      <div class="p1">
+        <button>Add To Favorites</button>
+      </div>
     </div>
-    <h3 class="d-flex justify-content-center my-1">Clouds</h3>
+    <h3 *ngIf="currentWeather" class="d-flex justify-content-center my-1">{{currentWeather[0].WeatherText}}</h3>
     <div class="d-flex flex-row justify-content-around">
       <div class="day-weather d-flex flex-column border align-items-center justify-content-center">
         <div>Sun</div>
