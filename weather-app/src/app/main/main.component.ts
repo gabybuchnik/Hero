@@ -13,15 +13,18 @@ export class MainComponent implements OnInit {
   cityName : string;
   cities;
   currentWeather;
+  fiveDaysWeather;
   constructor(private weatherService: WeatherService) {
+    this.cityName ="Tel Aviv";
     this.cities = [{ LocalizedName: 'Tel Aviv', key: '215854' }];
     this.currentWeather = null;
-    this.cityName ="Tel Aviv";
+    this.fiveDaysWeather = null;
   }
 
   async ngOnInit() {
     this.autocomplete();
     this.getWeather('215854');
+    this.getFiveDayWeather('215854');
   }
   async autocomplete() {
     let city = this.city.nativeElement.value;
@@ -33,11 +36,15 @@ export class MainComponent implements OnInit {
     for(let item of this.cities){
       if (item.LocalizedName === this.cityName) {
         this.getWeather(item.Key);
+        this.getFiveDayWeather(item.Key);
       }
     }
   }
   async getWeather(key){
     this.currentWeather = await this.weatherService.getCurrentDayWeather(key);
   }
-  
+  async getFiveDayWeather(key){
+    this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
+    console.log(this.fiveDaysWeather);
+  }
 }

@@ -8,17 +8,17 @@ export class WeatherService {
   currentWeather;
   fiveDaysWeather;
   api_key: string;
-  
+
   constructor() {
     this.cities = [];
     this.currentWeather = null;
     this.fiveDaysWeather = null;
-    this.api_key = 'X11rAKfsylpGhnbG1OqeRY1TOr8YJ4Gk';
+    this.api_key = 'V4FqN7J2A8UfR7ShqAW6pKsoJLaigWM7';
   }
 
   async autocomplete(cityName: string) {
     this.cities = [];
-    const url = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName;
+    const url = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName +'&&language=en-us';
     if (cityName) {
       let data = await this.requsetFetch(url);
       for (let city of data) {
@@ -29,14 +29,14 @@ export class WeatherService {
   }
 
   getCurrentDayWeather(citykey: string) {
-    const url = 'http://dataservice.accuweather.com/currentconditions/v1/' + citykey + '?apikey=' + this.api_key;
+    const url = 'http://dataservice.accuweather.com/currentconditions/v1/' + citykey + '?apikey=' + this.api_key +'&language=en-us';
     if (citykey) {
       return this.currentWeather = this.requsetFetch(url);;
     }
   }
 
   getFiveDaysWeather(citykey: string) {
-    const url = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + citykey + '?apikey=' + this.api_key;
+    const url = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + citykey + '?apikey=' + this.api_key + '&language=en-us&details=true&metric=true';
     if (citykey) {
       return this.fiveDaysWeather = this.requsetFetch(url);
     }
