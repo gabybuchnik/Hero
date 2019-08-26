@@ -17,11 +17,11 @@ export class MainComponent implements OnInit {
   constructor(private weatherService: WeatherService) {
     this.cityName ="Tel Aviv";
     this.cities = [{ LocalizedName: 'Tel Aviv', key: '215854' }];
-    this.currentWeather = null;
-    this.fiveDaysWeather = null;
+    this.currentWeather = [];
+    this.fiveDaysWeather = [];
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     const defaultKey = '215854';
     this.autocomplete();
     this.getWeather(defaultKey);
@@ -43,7 +43,6 @@ export class MainComponent implements OnInit {
   }
   async getWeather(key){
     this.currentWeather = await this.weatherService.getCurrentDayWeather(key);
-    console.log(this.currentWeather);
   }
   async getFiveDayWeather(key){
     this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
