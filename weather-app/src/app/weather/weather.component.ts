@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { FavoritesService } from '../favorites.service';
 import { favorite } from '../favorites.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,20 +21,27 @@ export class WeatherComponent implements OnInit {
   key: string;
   btnText: string;
   fav: boolean;
-  displayFavButton : boolean;
-  constructor(private weatherService: WeatherService, private favoritesService: FavoritesService) {
+  displayFavButton: boolean;
+  constructor(private weatherService: WeatherService, private favoritesService: FavoritesService, private activatedRoute: ActivatedRoute) {
     this.cityName = "Tel Aviv";
-    this.cities = [{ LocalizedName: 'Tel Aviv', key: '215854' }];
+    this.cities = [];
     this.currentWeather = [];
     this.fiveDaysWeather = [];
     this.key = '';
     this.btnText = 'Add To Favorites';
     this.fav = false;
-    this.displayFavButton =  false;
+    this.displayFavButton = false;
   }
 
   ngOnInit() {
-    const defaultKey = '215854';
+    let defaultKey;
+    if (this.activatedRoute.snapshot.params.id !== undefined) {
+      defaultKey = this.activatedRoute.snapshot.params.id;
+      this.cityName = this.activatedRoute.snapshot.params.name;
+    }
+    else{
+      defaultKey = '215854';
+    }
     this.autocomplete();
     this.getWeather(defaultKey);
     this.getFiveDayWeather(defaultKey);
