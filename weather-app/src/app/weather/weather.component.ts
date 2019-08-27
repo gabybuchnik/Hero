@@ -49,7 +49,6 @@ export class WeatherComponent implements OnInit {
     for (let item of this.cities) {
       if (item.LocalizedName.toLowerCase() === city.toLowerCase()) {
         this.cityName = city;
-        console.log(city.toLowerCase(), item.LocalizedName.toLowerCase());
         this.key = item.Key;
         this.getWeather(item.Key);
         this.getFiveDayWeather(item.Key);
