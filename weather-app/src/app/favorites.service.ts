@@ -21,8 +21,11 @@ export class FavoritesService {
       this.favorites.splice(index , 1);
     }
   }
+  
   checkFavoritesExist(id: string) {
-    const index = this.favorites.findIndex(item => item.id === id);
+    const index = this.favorites.findIndex(item => {
+      return item.id === id;
+    });
     if (index !== -1) {
       return true;
     }

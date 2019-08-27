@@ -13,6 +13,7 @@ export class CitiesComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }

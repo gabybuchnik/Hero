@@ -52,6 +52,7 @@ export class WeatherComponent implements OnInit {
         this.key = item.Key;
         this.getWeather(item.Key);
         this.getFiveDayWeather(item.Key);
+        this.toggleFavorites(false);
       }
     }
   }
@@ -61,15 +62,25 @@ export class WeatherComponent implements OnInit {
   async getFiveDayWeather(key) {
     this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
   }
-  toggleFavorites() {
+  toggleFavorites(clicked) {
     this.fav = this.favoritesService.checkFavoritesExist(this.key);
-    if (!this.fav) {
-      this.add();
-      this.btnText = 'Remove From Favorites';
+    if (clicked) {
+      if (!this.fav) {
+        this.add();
+        this.btnText = 'Remove From Favorites';
+      }
+      else {
+        this.remove();
+        this.btnText = 'Add To Favorites';
+      }
     }
     else {
-      this.remove();
-      this.btnText = 'Add To Favorites';
+      if (this.fav) {
+        this.btnText = 'Remove From Favorites';
+      }
+      else {
+        this.btnText = 'Add To Favorites';
+      }
     }
   }
   add() {
