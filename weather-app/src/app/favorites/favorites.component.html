@@ -1,7 +1,7 @@
 <div class="favorites-wrapper">
   <div *ngIf="favorites" class="item-wrapper">
-    <div *ngFor="let f of favorites" class="item">
-      <a [routerLink]="['/main' , f.id , f.name]">
+    <div *ngFor="let f of favorites">
+      <a [routerLink]="['/main' , f.id , f.name]" class="item">
           <div>{{f.name}}</div>
           <div>{{f.dagrees}}</div>
           <div>{{f.weatherText}}</div>
