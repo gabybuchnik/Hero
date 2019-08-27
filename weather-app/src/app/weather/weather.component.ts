@@ -20,6 +20,7 @@ export class WeatherComponent implements OnInit {
   key: string;
   btnText: string;
   fav: boolean;
+  displayFavButton : boolean;
   constructor(private weatherService: WeatherService, private favoritesService: FavoritesService) {
     this.cityName = "Tel Aviv";
     this.cities = [{ LocalizedName: 'Tel Aviv', key: '215854' }];
@@ -28,6 +29,7 @@ export class WeatherComponent implements OnInit {
     this.key = '';
     this.btnText = 'Add To Favorites';
     this.fav = false;
+    this.displayFavButton =  false;
   }
 
   ngOnInit() {
@@ -40,10 +42,10 @@ export class WeatherComponent implements OnInit {
     let city = this.city.nativeElement.value;
     this.cities = await this.weatherService.autocomplete(city);
   }
-  async setCity(e: Event) {
-    e.preventDefault();
-    this.cityName = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
+  async setCity() {
+    this.displayFavButton = true;
     this.city.nativeElement.value = this.cityName;
+    this.cityName = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
     let city = this.cityName;
     for (let item of this.cities) {
       if (item.LocalizedName.toLowerCase() === city.toLowerCase()) {
