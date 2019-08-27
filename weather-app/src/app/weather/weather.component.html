@@ -1,16 +1,15 @@
 <div class="border weather-forecast d-flex flex-column justify-content-between">
-  <form (submit)="setCity($event)" class="d-flex justify-content-center align-items-center flex-column">
+  <div class="d-flex justify-content-center align-items-center flex-column">
     <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
     <div class="d-flex flex-row">
-        <select class="select-city" (change)="changInput()" #citySelect>
+        <select class="select-city" (change)="setCity($event)" #citySelect>
             <option [hidden]="true">select...</option>
             <option *ngFor="let city of cities" #cityOption>
                 <app-cities [city]="city"></app-cities>
             </option>
         </select>
-      <button class="button">Go</button>
     </div>
-  </form>
+  </div>
  
   <div class="d-flex justify-content-between">
     <div class="d-flex flex-row p1">

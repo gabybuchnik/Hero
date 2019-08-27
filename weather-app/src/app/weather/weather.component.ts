@@ -40,19 +40,18 @@ export class WeatherComponent implements OnInit {
     let city = this.city.nativeElement.value;
     this.cities = await this.weatherService.autocomplete(city);
   }
-  changInput() {
-    this.cityName = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
-  }
-  setCity(e: Event) {
-    let city = this.city.nativeElement.value;
+  async setCity(e: Event) {
     e.preventDefault();
+    this.cityName = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
+    this.city.nativeElement.value = this.cityName;
+    let city = this.cityName;
     for (let item of this.cities) {
       if (item.LocalizedName.toLowerCase() === city.toLowerCase()) {
         this.cityName = city;
         this.key = item.Key;
-        this.getWeather(item.Key);
-        this.getFiveDayWeather(item.Key);
-        this.toggleFavorites(false);
+        await this.getWeather(item.Key);
+        await this.getFiveDayWeather(item.Key);
+        await this.toggleFavorites(false);
       }
     }
   }
