@@ -2,14 +2,19 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-.input-city, .select-city {
+.list-autocomplete{
+    height: 50px;
+    overflow: scroll;
+    border:1px solid;
+    width:300px;
+}
+.select-city{
+    width:270px;
+}
+.input-city {
     width: 100%;
     max-width: 300px;
     display: block;
-}
-.select-city{
-    width: 271px;
 }
 
 .weather-forecast {
