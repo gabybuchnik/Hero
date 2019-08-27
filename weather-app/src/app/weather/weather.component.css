@@ -7,10 +7,10 @@
     width: 100%;
     max-width: 300px;
     display: block;
-    margin: 15px auto;
 }
-
-
+.select-city{
+    width: 271px;
+}
 
 .weather-forecast {
     min-height: 350px;
