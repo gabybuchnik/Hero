@@ -3,7 +3,7 @@
     <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
     <div class="d-flex flex-row">
         <select class="select-city" (change)="changInput()" #citySelect>
-            <option [disabled]="true">select...</option>
+            <option [hidden]="true">select...</option>
             <option *ngFor="let city of cities" #cityOption>
                 <app-cities [city]="city"></app-cities>
             </option>
