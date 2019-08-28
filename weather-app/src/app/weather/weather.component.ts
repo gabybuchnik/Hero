@@ -57,8 +57,8 @@ export class WeatherComponent implements OnInit {
   }
   async setCity() {
     this.displayFavButton = true;
-    this.city.nativeElement.value = this.cityName;
     this.cityName = this.citySelect.nativeElement.options[this.citySelect.nativeElement.options.selectedIndex].value;
+    this.city.nativeElement.value = this.cityName;
     let city = this.cityName;
     for (let item of this.cities) {
       if (item.LocalizedName.toLowerCase() === city.toLowerCase()) {

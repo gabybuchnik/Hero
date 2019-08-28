@@ -1,6 +1,6 @@
 <div class="border weather-forecast d-flex flex-column justify-content-between">
   <div class="d-flex justify-content-center align-items-center flex-column">
-    <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
+    <input class="input-city" type="text" placeholder="enter city" (keyup)="autocomplete()" #city>
     <div class="d-flex flex-row" *ngIf="cities.length">
       <select class="select-city" (change)="setCity()" #citySelect>
         <option [hidden]="true">select...</option>
