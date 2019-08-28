@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { WeatherService } from '../weather.service';
-import { FavoritesService } from '../favorites.service';
-import { favorite } from '../favorites.model';
+import { WeatherService } from '../services/weather.service';
+import { FavoritesService } from '../services/favorites.service';
+import { favorite } from '../models/favorites.model';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -23,12 +23,12 @@ export class WeatherComponent implements OnInit {
   fav: boolean;
   displayFavButton: boolean;
   constructor(private weatherService: WeatherService, private favoritesService: FavoritesService, private activatedRoute: ActivatedRoute) {
-    this.cityName = "Tel Aviv";
+    this.cityName = 'Tel Aviv';
     this.cities = [];
     this.currentWeather = [];
     this.fiveDaysWeather = [];
     this.key = '';
-    this.btnText = 'Add To Favorites';
+    this.btnText = '';
     this.fav = false;
     this.displayFavButton = false;
   }

@@ -13,7 +13,7 @@ export class WeatherService {
     this.cities = [];
     this.currentWeather = null;
     this.fiveDaysWeather = null;
-    this.api_key = 'DGaHK4xVTR9ruzGwnGcPQL1xtdMSkDxG';
+    this.api_key = '4AMTGOZAsT9141iim9qIGuYGGk8DJnGB';
   }
 
   async autocomplete(cityName: string) {

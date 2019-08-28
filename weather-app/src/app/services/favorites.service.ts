@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { favorite } from './favorites.model';
+import { favorite } from '../models/favorites.model';
 
 @Injectable({
   providedIn: 'root'

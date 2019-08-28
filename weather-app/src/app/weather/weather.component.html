@@ -2,15 +2,17 @@
   <div class="d-flex justify-content-center align-items-center flex-column">
     <input class="input-city" type="text" placeholder="enter city" value="{{cityName}}" (keyup)="autocomplete()" #city>
     <div class="d-flex flex-row" *ngIf="cities.length">
-        <select class="select-city" (change)="setCity()" #citySelect>
-            <option [hidden]="true">select...</option>
-            <option *ngFor="let city of cities" #cityOption>
-                <app-cities [city]="city"></app-cities>
-            </option>
-        </select>
+      <select class="select-city" (change)="setCity()" #citySelect>
+        <option [hidden]="true">select...</option>
+        <option *ngFor="let city of cities" #cityOption>
+          <select>
+            {{city.LocalizedName}}
+          </select>
+        </option>
+      </select>
     </div>
   </div>
- 
+
   <div class="d-flex justify-content-between">
     <div class="d-flex flex-row p1">
       <div class="d-flex flex-column p1" *ngIf="currentWeather[0]">
