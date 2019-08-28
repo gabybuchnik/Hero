@@ -21,7 +21,7 @@ export class WeatherService {
     let englishReg = /^[A-Za-z ]*$/;
     let en = englishReg.test(cityName);
     if (en) {
-      const url = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName + '&language=en-us';
+      const url = 'https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName + '&language=en-us';
       if (cityName) {
         let data = await this.requsetFetch(url);
         for (let city of data) {
@@ -36,7 +36,7 @@ export class WeatherService {
   }
 
   getCurrentDayWeather(citykey: string) {
-    const url = 'http://dataservice.accuweather.com/currentconditions/v1/' + citykey + '?apikey=' + this.api_key + '&language=en-us';
+    const url = 'https://dataservice.accuweather.com/currentconditions/v1/' + citykey + '?apikey=' + this.api_key + '&language=en-us';
     try {
       return this.currentWeather = this.requsetFetch(url);
     } catch (error) {
@@ -45,7 +45,7 @@ export class WeatherService {
   }
 
   getFiveDaysWeather(citykey: string) {
-    const url = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + citykey + '?apikey=' + this.api_key + '&language=en-us&details=true&metric=true';
+    const url = 'https://dataservice.accuweather.com/forecasts/v1/daily/5day/' + citykey + '?apikey=' + this.api_key + '&language=en-us&details=true&metric=true';
     try {
       return this.fiveDaysWeather = this.requsetFetch(url);
     } catch (error) {
