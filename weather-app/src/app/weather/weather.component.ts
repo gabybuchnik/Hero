@@ -71,10 +71,20 @@ export class WeatherComponent implements OnInit {
     }
   }
   async getWeather(key) {
-    this.currentWeather = await this.weatherService.getCurrentDayWeather(key);
+    try {
+      this.currentWeather = await this.weatherService.getCurrentDayWeather(key);
+    } catch (error) {
+      this.toastrService.error(error);
+    }
+   
   }
   async getFiveDayWeather(key) {
-    this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
+    try {
+      this.fiveDaysWeather = await this.weatherService.getFiveDaysWeather(key);
+    } catch (error) {
+      this.toastrService.error(error);
+    }
+   
   }
   toggleFavorites(clicked) {
     this.fav = this.favoritesService.checkFavoritesExist(this.key);

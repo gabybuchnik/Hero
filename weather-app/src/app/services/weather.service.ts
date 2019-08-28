@@ -13,7 +13,7 @@ export class WeatherService {
     this.cities = [];
     this.currentWeather = null;
     this.fiveDaysWeather = null;
-    this.api_key = 'MAE7vn2FiXii6Fg3hZlqhuSrEdNM37Hq';
+    this.api_key = 'HySknNN1StOS3eJeghGx84bVzGN6fZRx';
   }
 
   async autocomplete(cityName: string) {
@@ -21,7 +21,7 @@ export class WeatherService {
     let englishReg = /^[A-Za-z ]*$/;
     let en = englishReg.test(cityName);
     if (en) {
-      const url = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName + '&&language=en-us';
+      const url = 'http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=' + this.api_key + '&q=' + cityName + '&language=en-us';
       if (cityName) {
         let data = await this.requsetFetch(url);
         for (let city of data) {
@@ -31,27 +31,35 @@ export class WeatherService {
       return this.cities;
     }
     else {
-       throw "only english characters allowed";
+      throw "only english characters allowed";
     }
   }
 
   getCurrentDayWeather(citykey: string) {
     const url = 'http://dataservice.accuweather.com/currentconditions/v1/' + citykey + '?apikey=' + this.api_key + '&language=en-us';
-    if (citykey) {
-      return this.currentWeather = this.requsetFetch(url);;
+    try {
+      return this.currentWeather = this.requsetFetch(url);
+    } catch (error) {
+      throw error;
     }
   }
 
   getFiveDaysWeather(citykey: string) {
     const url = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + citykey + '?apikey=' + this.api_key + '&language=en-us&details=true&metric=true';
-    if (citykey) {
+    try {
       return this.fiveDaysWeather = this.requsetFetch(url);
+    } catch (error) {
+      throw error;
     }
   }
 
   async requsetFetch(url) {
-    let res = await fetch(url);
-    let data = await res.json();
-    return data;
+    try {
+      let res = await fetch(url);
+      let data = await res.json();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 }
