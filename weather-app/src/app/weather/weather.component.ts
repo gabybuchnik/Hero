@@ -3,7 +3,7 @@ import { WeatherService } from '../services/weather.service';
 import { FavoritesService } from '../services/favorites.service';
 import { favorite } from '../models/favorites.model';
 import { ActivatedRoute } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-weather',
@@ -22,7 +22,7 @@ export class WeatherComponent implements OnInit {
   btnText: string;
   fav: boolean;
   displayFavButton: boolean;
-  constructor(private weatherService: WeatherService, private favoritesService: FavoritesService, private activatedRoute: ActivatedRoute) {
+  constructor(private weatherService: WeatherService, private favoritesService: FavoritesService, private activatedRoute: ActivatedRoute, private toastrService: ToastrService) {
     this.cityName = 'Tel Aviv';
     this.cities = [];
     this.currentWeather = [];
@@ -48,7 +48,12 @@ export class WeatherComponent implements OnInit {
   }
   async autocomplete() {
     let city = this.city.nativeElement.value;
-    this.cities = await this.weatherService.autocomplete(city);
+    try {
+      this.cities = await this.weatherService.autocomplete(city);
+    } catch (error) {
+      this.displayFavButton = false;
+      this.toastrService.error(error);
+    }
   }
   async setCity() {
     this.displayFavButton = true;
