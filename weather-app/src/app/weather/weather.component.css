@@ -76,6 +76,15 @@
     background: rgb(95, 95, 95);
 }
 
+.fa.fa-heart{
+    color: rgb(153, 153, 153);
+    margin-right: 10px;
+    font-size: 20px;
+}
+.fa.fa-heart.red{
+    color: red;
+}
+
 @media only screen and (max-width: 600px) {
     .currentWeather-row {
         flex-direction: column;

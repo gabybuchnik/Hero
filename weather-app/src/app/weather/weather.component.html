@@ -31,6 +31,7 @@
       </div>
     </div>
     <div class="p1">
+      <i [ngClass]="!fav ? 'fa fa-heart' : 'fa fa-heart red'" *ngIf="displayFavButton"></i>
       <button class="button" (click)="toggleFavorites(true)" *ngIf="displayFavButton">{{btnText}}</button>
     </div>
   </div>
