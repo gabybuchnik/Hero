@@ -39,7 +39,7 @@ export class WeatherComponent implements OnInit {
       defaultKey = this.activatedRoute.snapshot.params.id;
       this.cityName = this.activatedRoute.snapshot.params.name;
     }
-    else{
+    else {
       defaultKey = '215854';
     }
     this.autocomplete();
@@ -73,15 +73,13 @@ export class WeatherComponent implements OnInit {
   }
   toggleFavorites(clicked) {
     this.fav = this.favoritesService.checkFavoritesExist(this.key);
-    if (clicked) {
-      if (!this.fav) {
-        this.add();
-        this.btnText = 'Remove From Favorites';
-      }
-      else {
-        this.remove();
-        this.btnText = 'Add To Favorites';
-      }
+    if (clicked && !this.fav) {
+      this.add();
+      this.btnText = 'Remove From Favorites';
+    }
+    else if (clicked && this.fav) {
+      this.remove();
+      this.btnText = 'Add To Favorites';
     }
     else {
       if (this.fav) {
